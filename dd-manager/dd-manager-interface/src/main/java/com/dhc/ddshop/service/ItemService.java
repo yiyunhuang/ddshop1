@@ -41,5 +41,5 @@ public interface ItemService {
      * @param content 商品描述
      * @return 受到影响的行数
      */
-    int saveItem(TbItem tbItem, String content);
+    Long saveItem(TbItem tbItem, String content,String paramData);
 }

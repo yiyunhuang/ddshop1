@@ -59,13 +59,24 @@
 <script type="text/javascript" src="js/ueditor/ueditor.config.js"></script>
 <!-- ueditor编辑器源码文件 -->
 <script type="text/javascript" src="js/ueditor/ueditor.all.js"></script>
-
-
 <!-- 自定义脚本 -->
 <script src="js/common.js"></script>
 <!-- 自定义js -->
 <script>
     ddshop.registerMenuEvent();
 </script>
+
+<script>
+    UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+    UE.Editor.prototype.getActionUrl = function(action) {
+        if (action == 'uploadimage') {
+            return 'http://localhost:8080/ddshop/file/upload';
+        }else {
+            return this._bkGetActionUrl.call(this, action);
+        }
+    }
+</script>
+
+
 </body>
 </html>
